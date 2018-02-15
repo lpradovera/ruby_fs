@@ -186,6 +186,9 @@ module RubyFS
           hash[k.downcase.gsub('-',"_").intern] = v
         end
       end
+    rescue
+      logger.warn "Failed parsing JSON:#{content}"
+      return {}
     end
 
     def post_init
